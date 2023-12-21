@@ -11,7 +11,39 @@
 */
 
 class Todo {
+  constructor(){
+    let arr = [];
 
+    this.add = function(task) {
+      arr.push(task);
+    };
+
+    this.remove = function(indexOfTodo){
+      
+       if(indexOfTodo < 0 || indexOfTodo > arr.length-1) return null;
+      //  arr.splice(staring_index,Number_of_element_from_the_index_you_want_delete);
+       return arr.splice(indexOfTodo,1);  
+    };
+
+    this.update = function(indexOfTodo, task){
+      if(indexOfTodo < 0 || indexOfTodo > arr.length-1) return null;
+      arr[indexOfTodo] = task;
+    };
+
+    this.getAll = function(){
+      return arr;
+    };
+    
+    this.get = function(indexOfTodo){
+      if(indexOfTodo < 0 || indexOfTodo > arr.length-1) return null;
+      return arr[indexOfTodo];
+    };
+     
+    this.clear = function(){
+      arr = [];
+    };
+  }
+   
 }
 
 module.exports = Todo;
