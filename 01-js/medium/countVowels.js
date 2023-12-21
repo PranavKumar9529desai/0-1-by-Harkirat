@@ -6,7 +6,18 @@
 */
 
 function countVowels(str) {
+  let count = 0 ;
+  let Myvar = str.toLowerCase();
+  for(let i =0 ; i< Myvar.length ; i++){
+    if(Myvar[i]==='a'||Myvar[i]==='e'||Myvar[i]==='i'||Myvar[i]==='o'||Myvar[i]==='u'){
+         count = count +1 ;
+    }
+    
+  }
+  // console.log(Myvar);
     // Your code here
+    return count;
 }
 
+// countVowels("pranav");
 module.exports = countVowels;

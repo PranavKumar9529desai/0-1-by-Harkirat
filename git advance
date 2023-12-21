@@ -1,0 +1,90 @@
+-----------------------what is git and git hub --------------------------------
+
+
+-->2 types of version controls 
+
+1.centraliazed and decentralized.
+
+
+
+------------------------how git works -------------------------------------------
+Git uses something called as BLOB (binary large Object )  which is a binary file stores the files content without any metadata .
+->this binary file in git database is called as "SHA1" hash.
+
+
+->in git files are addressed by their contents not by their names.
+
+
+
+
+
+---------------------------how to set-up repo -----------------------------------
+
+1.first fork the repo
+2.add remote origin and upstream.
+3.fetch from upstream.
+
+fetch  	
+
+1.origin vs upstream.
+
+
+
+what is upstream ?
+->upsteam is remote repo which we don't own .
+
+
+Add remote url . 
+->  git remote add origin url.
+->  git remote add upstrem url.
+
+-->use fetch instead of pull 
+
+git rebase upstream/base.
+--->The git rebase command is used to incorporate changes from one branch into another
+
+
+
+
+
+
+
+
+
+
+-----------------------------git branching and merging---------------------------
+
+
+git branch branch_name
+->cretes new branch
+
+git checkout branch_name
+->lets you switch between the branches.
+
+git diff branch_name(branch name tow whom you want to compare with )
+->compares the difference between the braches.
+
+how to add new branch upstrem before push 
+-->git push --set-upstream origin features
+
+
+
+-------------------Merge conflicts---------------------------
+
+git reset --mixed
+-->undo any changes made to the meraging and staging area.
+
+git merge --abort
+-->back to the state before merge.
+
+git reset 
+-->reset the confliected files to their previous state.
+
+
+<<<<< that is coming from the hotfix branch 
+
+>>>>> main branch
+
+Stashing : saving changes somewher else and use them later.
+
+
