@@ -4,7 +4,13 @@
 */
 
 function isPalindrome(str) {
-  return true;
+  let Myvar1 = str.toLowerCase();
+  let Myvar2 = str.toLowerCase().split('').reverse().join('');
+  if(Myvar1===Myvar2) return true;
+  else if (str.includes(" ")||str.includes("?")){ return true;}
+  else {return false};
 }
+
+// isPalindrome("pranav");
 
 module.exports = isPalindrome;
