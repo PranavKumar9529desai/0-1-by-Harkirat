@@ -55,6 +55,7 @@ function splitString(str, separator) {
 splitString("Hello World", " ");
 
 // trim
+// it removes all the leading and trailing white spaces;
 function trimString(str) {
   console.log("Original String:", str);
   console.log("After trim:", str.trim());
