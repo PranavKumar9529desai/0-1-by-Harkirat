@@ -17,5 +17,31 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 
+// array to store all the new todos
+let Todo = [{
+  "title" : "pranav",
+   "description" : "my name is pranav"
+}];
+
+// get route and render all todo to the user.
+app.get("/todos" , function(req ,res ){
+  // const title = req.body.title;
+  // const description = re.body.description;
+  res.status(200).send(Todo);
+});
+
+
+// post route , user can upload new todo in the todo list.
+app.post("todos",function(req,res){
+   let title = req.body.title;
+   let description= req.body.description;
+   console.log(title);
+   console.log(description);
+})
+
+// app is runnig on the 3000 port .
+app.listen(3000 , function(req,res){
+  console.log("3000");
+})
 
 module.exports = app;
