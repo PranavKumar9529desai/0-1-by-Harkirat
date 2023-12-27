@@ -16,41 +16,42 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const express = require('express');
 const app = express();
+const path = require('path');
+const { error } = require('console');
 app.use(bodyParser.json());
 
+
 app.get("/files", function(req, res) {
-  fs.readdir("./files", function(err, files) {
+  const filepath = path.join(__dirname, "./files/");
+  fs.readdir(filepath, function(err, files) {
     if (err) {
-      // Handle error
-      console.error(err);
-      res.status(500).send("Internal Server Error");
-    } else {
-      // Return the list of file names
-      res.status(200).json(files);
-    }
+      return res.status(500).json({ error: "File not found" });
+    } res.json(files);
   });
 });
+ 
 
-app.get("/files/:filename", function(req, res) {
-  const filename = req.params.filename;
+app.get("/file/:filename", function(req, res) {
+const filePath = path.join(__dirname,"./files/",req.params.filename);  
 
-  const filePath = `./files/${filename}`;
-
-  fs.readFile(filePath, function(err, data) {
+fs.readFile(filePath,'utf8',function(err, data) {
     if (err) {
       // File not found
       res.status(404).send("File not found");
-    } else {
-      // File found, send the content
-      res.status(200).send(data.toString());
-    }
+    } 
+      res.send(data);
   });
 });
 
-app.all("*",(req, res, next) => {
+app.all("*",(req, res) => {
   res.status(404).send("Route not found");
 });
 
+
+
+// app.listen(3000,function(req,res){
+//   console.log("app is running on 3000");
+// })
 module.exports = app;
 
 
