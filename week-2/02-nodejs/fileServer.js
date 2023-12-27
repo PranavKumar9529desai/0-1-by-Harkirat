@@ -12,36 +12,49 @@
     - For any other route not defined in the server return 404
     Testing the server - run `npm run test-fileServer` command in terminal
  */
-const express = require('express');
+const bodyParser = require('body-parser');
 const fs = require('fs');
-const path = require('path');
+const express = require('express');
 const app = express();
+app.use(bodyParser.json());
 
-// array to store all the new todos
-let Todo = [{
-  "title" : "pranav",
-   "description" : "my name is pranav"
-}];
-
-// get route and render all todo to the user.
-app.get("/todos" , function(req ,res ){
-  // const title = req.body.title;
-  // const description = re.body.description;
-  res.status(200).send(Todo);
+app.get("/files", function(req, res) {
+  fs.readdir("./files", function(err, files) {
+    if (err) {
+      // Handle error
+      console.error(err);
+      res.status(500).send("Internal Server Error");
+    } else {
+      // Return the list of file names
+      res.status(200).json(files);
+    }
+  });
 });
 
+app.get("/files/:filename", function(req, res) {
+  const filename = req.params.filename;
 
-// post route , user can upload new todo in the todo list.
-app.post("todos",function(req,res){
-   let title = req.body.title;
-   let description= req.body.description;
-   console.log(title);
-   console.log(description);
-})
+  const filePath = `./files/${filename}`;
 
-// app is runnig on the 3000 port .
-app.listen(3000 , function(req,res){
-  console.log("3000");
-})
+  fs.readFile(filePath, function(err, data) {
+    if (err) {
+      // File not found
+      res.status(404).send("File not found");
+    } else {
+      // File found, send the content
+      res.status(200).send(data.toString());
+    }
+  });
+});
+
+app.all("*",(req, res, next) => {
+  res.status(404).send("Route not found");
+});
+
+module.exports = app;
+
+
+
+
 
 module.exports = app;
