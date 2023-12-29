@@ -1,0 +1,8 @@
+What is Middlware ?
+-> th middlewares are the functions has accress to  the request and response objects.
+-> and the next middleware function in the application's request-response cycle.
+
+why we app.use?
+-> app.use is used to mount the specified middleware function(s) at the path which is being specified.
+in express function inside the app.use will be applied to all the routes.
+-> wher you define is also important because the order neacsuse it will only appicable to the routes which are defined after the app.use function.
