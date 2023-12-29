@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 const jwtPassword = 'secret';
 
-
 /**
  * Generates a JWT for a given username and password.
  *
@@ -14,7 +13,17 @@ const jwtPassword = 'secret';
  *                        the password does not meet the length requirement.
  */
 function signJwt(username, password) {
-    // Your code here
+    if (!validateEmail(username) || password.length < 6) {
+        return null;
+    }
+
+    const payload = {
+        username,
+        password,
+    };
+
+    const token = jwt.sign(payload, jwtPassword);
+    return token;
 }
 
 /**
@@ -26,7 +35,12 @@ function signJwt(username, password) {
  *                    using the secret key.
  */
 function verifyJwt(token) {
-    // Your code here
+    try {
+        jwt.verify(token, jwtPassword);
+        return true;
+    } catch (err) {
+        return false;
+    }
 }
 
 /**
@@ -37,13 +51,33 @@ function verifyJwt(token) {
  *                         Returns false if the token is not a valid JWT format.
  */
 function decodeJwt(token) {
-    // Your code here
+    try {
+        const decoded = jwt.decode(token);
+        if (decoded ) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (err) {
+        return false;
+    }
 }
 
+/**
+ * Validates if a given string is a valid email address.
+ *
+ * @param {string} email - The email address to validate.
+ * @returns {boolean} Returns true if the email is a valid email address.
+ *                    Returns false otherwise.
+ */
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
 
 module.exports = {
-  signJwt,
-  verifyJwt,
-  decodeJwt,
-  jwtPassword,
+    signJwt,
+    verifyJwt,
+    decodeJwt,
+    jwtPassword,
 };
