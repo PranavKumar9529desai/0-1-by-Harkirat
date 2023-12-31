@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <button onclick="fetchData()">Click me</button>
+        <p id="jokes"></p>
+    </div>
+
+    <script>
+       async function fetchData(){
+        const jokesContainer = document.getElementById('jokes');
+
+                  const data = await fetch("http://localhost:3000/api/jokes");
+                  const jokes = await data.json();
+                   
+                   
+       
+
+                    for (const key in jokes) {
+                        if (jokes.hasOwnProperty(key)) {
+                            const jokeElement = document.createElement('p');
+                            jokeElement.textContent = jokes[key];
+                            jokesContainer.appendChild(jokeElement);
+                        }
+                    }
+                }
+                
+                
+            
+    </script>
+        
+    </script>
+</body>
+</html>

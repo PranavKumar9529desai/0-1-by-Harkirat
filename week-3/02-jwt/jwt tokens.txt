@@ -1,0 +1,24 @@
+JsonWebtoken is neihter a hashing no the encryption it is digital signature which is used to verify the authenticity of the message
+
+it has three part 
+
+
+look at jwt.js to understand how it works
+
+
+everyone can decode the token but no one can change the token because it is signed with the secret key.
+similar to the digital signature as everyone can see the signature but only banks can verify it.
+
+
+JWT.verify() will throw an error if the token is invalid. You can catch the error and handle it however you want. For example:
+function verifyJWT(username,token){
+    try {
+          jwt.verify(username,secret);
+          return true;
+          } catch (error) {
+          return false; 
+      }
+  }
+
+Why we use try catch instead 
+->as some function throws exception instead of returning boolean value.

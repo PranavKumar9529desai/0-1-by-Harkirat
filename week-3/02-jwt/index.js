@@ -53,7 +53,7 @@ function verifyJwt(token) {
 function decodeJwt(token) {
     try {
         const decoded = jwt.decode(token);
-        if (decoded ) {
+        if (decoded !== null) {
             return true;
         } else {
             return false;
@@ -73,6 +73,8 @@ function decodeJwt(token) {
 function validateEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+    // .test returns true is pattern is matched and false pattern is not matched.
+    
 }
 
 module.exports = {
