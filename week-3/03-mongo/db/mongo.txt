@@ -1,0 +1,37 @@
+Problems faced whioe trying tot connected the Mongodb-compass to the local.
+
+connection_url/your_database_name 
+
+then use the database will automatically create collection based on the your model name.foe ex 
+if your model name is "Course" then it will create the collection as "courses".
+
+const User=mongoose.model("User",userSchema);    // users collection will be created in the database.
+
+'mongodb://0.0.0.0/Myserver // this is the connection url for the mongodb compass.
+here 0.0.0.0 is the ip address of the local machine.
+instead of this you can use the localhost also.
+
+
+const ImageSchema = new mongoose.Schema({
+    url: {
+        type: String,
+        required: true,
+        // You can add more validation options specific to the image field if needed
+    }
+});
+
+// Define the main schema referencing the ImageSchema for the "image" field
+const CourseSchema = new mongoose.Schema({
+    id: Number,
+    title: String,
+    description: String,
+    price: Number,
+    image: {
+        type: ImageSchema,
+        required: true,
+    }
+});
+
+
+
+in Usermiddelware.js tou can see the If the user exists, next() is called, and control is passed to the route handler.
