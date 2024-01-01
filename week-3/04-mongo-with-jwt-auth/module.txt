@@ -1,0 +1,1 @@
+when you require a module, all the top-level code in the module is run immediately.
