@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+     .parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* This makes the parent take up the full height of the viewport */
+}
+
+div {
+    color: aqua;
+    border: solid;
+    text-align: center;
+    border-width: 5px;
+    width: auto;
+    position: fixed;
+}
+    </style>
+
+    <div id="pranav" class="container">
+        <form action="">
+            <input id= "number1" type="number" placeholder="number1">
+            <br>
+            <br>
+            <br>
+            <input id= "number2" type="number" placeholder="number1">
+            <br>
+            <br>
+            <br>
+
+            <button type="button" onclick="start()">Submit</button>
+        </form>
+    </div>
+    <dialog id="dialog">
+        <p id="result"></p>
+        <button id="close">Close</button>
+    </dialog>
+    <script>
+        function Add(a,b){
+            return parseInt(a) + parseInt(b);
+        }
+    
+        function start() {
+            let a = document.getElementById("number1").value;
+            let b = document.getElementById("number2").value;
+            let ans = Add(a, b);
+            
+            let dialog = document.getElementById("dialog");
+            document.getElementById("result").textContent = "The result is: " + ans;
+            dialog.showModal();
+    
+            document.getElementById("close").onclick = function() {
+                dialog.close();
+            };
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+<script>
+    function Add(a,b){
+        return parseInt(a) + parseInt(b);
+    }
+
+    function start() {
+        let a = document.getElementById("number1").value;
+        let b = document.getElementById("number2").value;
+        let ans = Add(a, b);
+        
+        let dialog = document.getElementById("dialog");
+        document.getElementById("result").textContent = "The result is: " + ans;
+        dialog.showModal();
+
+        document.getElementById("close").onclick = function() {
+            dialog.close();
+        };
+    }
+</script>

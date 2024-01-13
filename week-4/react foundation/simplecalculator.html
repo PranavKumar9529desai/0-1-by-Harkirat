@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="pranav">
+        <form action="">
+            <input id= "number1"  oninput="start()" type="number" placeholder="number1">
+            <br>
+            <br>
+            <br>
+            <input id= "number2"   oninput="start()"  type="number" placeholder="number1">
+            <br>
+            <br>
+            <br>
+
+            <!-- <button type="button" onclick="start()">Submit</button> -->
+            <div id="pranavkumar"></div>
+        </form>
+    </div>
+        <script>
+            function Add(a,b){
+                    return parseInt(a)+parseInt(b);
+                }
+
+                async  function  start()
+    {     let a = document.getElementById("number1").value;
+          let b = document.getElementById("number2").value;
+          console.log(a,b);
+                let ans =  Add(a,b);
+                const divtoAdd= document.getElementById("pranavkumar");
+                divtoAdd.innerHTML= ans;
+                
+                // const textNode = document.createTextNode(ans);
+                // divtoAdd.appendChild(textNode);
+    }
+        
+        </script>
+    
+</body>
+</html>

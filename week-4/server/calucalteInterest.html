@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="new div">
+        <form action="">
+            <input type="number" id="interest" placeholder="interest">
+            <br><br>
+            <input type="number" id="rate" placeholder="rate">
+            <br><br>
+            <input type="number" id="time" placeholder="time">
+            <br><br>
+            <button type="button"   onclick="calulateInt()">calculateINT</button>
+            <br><br>
+            
+        </form>
+        <h1 id="tot">total : </h1>
+        <h1 id="int">interest  : </h1>
+
+    </div>
+
+    <script>
+      
+        
+        async function calulateInt(){
+        const Interest = document.getElementById("interest").value;
+        const Rate = document.getElementById("rate").value;
+        const Time = document.getElementById("time").value;
+        const tot = document.getElementById("tot");
+        const  int = document.getElementById("int");
+        // ans.innerHTML=;
+        const response = await fetch(`http://localhost:3000/interest?principal=${Interest}&rate=${Rate}&time=${Time}`);
+        const data = await response.json();
+        console.log(data);
+        const calulated_total = data.total ;
+        const calculated_intrest = data.interest
+        tot.innerHTML += calulated_total;
+        int.innerHTML += calculated_intrest;
+       }
+    </script>
+</body>
+</html>

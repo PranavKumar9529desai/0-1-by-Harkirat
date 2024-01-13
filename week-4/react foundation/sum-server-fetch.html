@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="pranav">
+        <form action="">
+            <input id="number1" type="number" placeholder="number1">
+            <br><br><br>
+            <input id="number2" type="number" placeholder="number2">
+            <br><br><br>
+            <div id="pranavkumar"></div>
+            <button type="button" onclick="fetchThedata()">Submit</button>
+            
+        </form>
+    </div>
+    <script>
+        async function fetchThedata() {
+            let a = document.getElementById("number1").value;
+            let b = document.getElementById("number2").value;
+            let m = parseInt(a);
+            let n = parseInt(b);
+            console.log(a, b);
+            try {
+                const response = await fetch(`http://localhost:3000/sum?a=${m}&b=${n}`);
+                // console.log(response);
+                const data = await response.json();
+                console.log(data);
+                const divtoAdd = document.getElementById("pranavkumar");
+                divtoAdd.innerText=data;
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    </script>
+</body>
+</html>

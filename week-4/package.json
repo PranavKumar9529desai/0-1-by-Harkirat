@@ -1,0 +1,15 @@
+{
+  "name": "week-4",
+  "version": "1.0.0",
+  "description": "You have been given the code of a purely frontend TODO app\r You have to fill in the following functions - \r  - addTodoToDom\r  - removeTodoFromDom\r  - updateTodoInDom\r  - updateState",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}

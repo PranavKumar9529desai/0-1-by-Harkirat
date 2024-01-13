@@ -1,0 +1,3 @@
+what is state ?
+--> thing that chages frequently in complex objet .
+-->Dom re renders when ever state changes.

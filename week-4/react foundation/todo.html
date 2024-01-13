@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #mainDiv{
+        text-align: center;
+        border-radius: 10%;
+        /* border: solid; */
+        border-width: 5px;
+        color: black;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 3%;
+    }
+    #todos{
+        /* border: solid; */
+        color: rgb(12, 16, 2);
+        width: auto;
+       }
+    .markcomplete h3,
+        .markcomplete p 
+        /* The syntax .classname element in CSS is used to select all elements of a certain type that are descendants of an element with a certain class. */
+        {
+               text-decoration: line-through;
+        }
+</style>
+    <body>
+        <div id="mainDiv">
+        <input type="text" id="title" placeholder="Todo title"></input> <br /><br />
+        <input type="text" id="description" placeholder="Todo description"></input> <br /><br />
+        
+        <button onclick="addTodo()">Add todo</button>
+        <div id="pranav"> </div>
+        </div>
+        
+       
+        <!-- <div id="todos">
+            <h3>title</h3>
+            <p>description</p>
+        </div> -->
+        </body>
+    <script>
+            let id = 0 ;
+            function markComplete(){
+                let divToAdd = event.target.parentElement;
+                // event.target tell you which button is clicked .
+                // this line tell about which div among the multiple divs called functions
+                // then add classs markcomplete only to the div which are called the fun
+                divToAdd.classList.add("markcomplete");
+                event.target.innerHTML = "Done";
+            }
+             
+            
+                
+            //  function addTodo(){
+            //     const title = document.getElementById("title").value;
+            //     const description = document.getElementById("description").value;
+            //     const mainDiv = document.getElementById("mainDiv");
+            //     console.log(title,description);
+            //     let divToAdd = document.createElement("div");
+            //     // older way , a better way is mentioned below.
+            //     // let htmlLoad = `
+            //     // <h3>${title}</h3>
+            //     // <p>${description}</p>
+            //     // <button>mark done</button>`
+                
+            //     let h3 = document.createElement("h3");
+            //     let  p = document.createElement("p");
+            //     let button = document.createElement("button");
+            //     button.setAttribute("onclick" , "markComplete()");
+            //     divToAdd.setAttribute("id" , `${id++}`);
+
+            //     button.textContent = "Mark as Complete";
+            //     h3.textContent = title;
+            //     p.textContent = description;
+            //     divToAdd.appendChild(h3);
+            //     divToAdd.appendChild(p);
+            //     divToAdd.appendChild(button);
+            //     mainDiv.appendChild(divToAdd);
+            // }
+
+            function createAndAppend(Title,Description,Id){
+                 const mainDiv = document.getElementById("mainDiv");
+                 let title = Title;
+                 let description = Description;
+                 let id = Id ;
+                 let h3 = document.createElement("h3");
+                 let  p = document.createElement("p");
+                 let button = document.createElement("button");
+                 button.setAttribute("onclick" , "markComplete()");
+                 button.textContent = "Mark as Complete";
+                 h3.textContent = title;
+                 p.textContent = description;
+                 let divToAdd = document.createElement("div");
+                 divToAdd.setAttribute("id" , `${id}`);
+                 divToAdd.appendChild(h3);
+                 divToAdd.appendChild(p);
+                 divToAdd.appendChild(button);
+                //  mainDiv.appendChild(divToAdd);
+                return divToAdd;
+     }
+        // state is an array of objets
+        let state = [
+            // {"title" : "this is title" , "description" : "this is description 1" , "id" : 1},
+            // {"title" : "this is title 2" , "description" : "this is description 2" , "id" : 2},
+            // {"title" : "this is title 3" , "description" : "this is description 3" , "id" : 3}
+        ]
+
+        function upadateAccstate(state){
+            const parent = document.getElementById('pranav');
+            parent.innerHTML = ""; 
+            // Clear the innerHTML of the target element
+            for(let i=0; i < state.length ; i++){
+                // console.log("state " , state);
+
+                // console.log(state[i]["title"]);
+                // console.log(state[i]["description"]);
+               const divToAdd = createAndAppend(state[i]["title"],state[i]["description"],state[i]["id"]);
+               parent.appendChild(divToAdd);
+               
+                // state = [{}]; 
+            }
+        }
+        
+        window.setInterval
+        (async function fetchData(){
+             const data = await fetch('http://localhost:3000/todos');
+            //  console.log(res);
+             const result = await data.json();
+             const todos = result.todos;
+            state = [ ];
+
+            todos.forEach(todo => {
+             let formattedTodo = {
+                title: todo.title,
+                description: todo.description,
+                id: todo.id,
+                };
+            // console.log(formattedTodo);
+            state.push(formattedTodo);
+            console.log(state);
+           
+        });
+        upadateAccstate(state);
+},5000)
+
+        
+    </script>
+</html>

@@ -1,3 +1,0 @@
-npm i 
--->install all dependicies mentioned in the package.json file
-```

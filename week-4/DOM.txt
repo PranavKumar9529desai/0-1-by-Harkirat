@@ -1,0 +1,8 @@
+what is purpose of using ids as class do the same thing
+->Id let's use the dom api
+
+
+
+basicalyy when we use Document in our code we are using the dom api .
+as we know browser consits of the many more things and one of them is dom api.
+which is provided buy the browser not buy the javascript.
