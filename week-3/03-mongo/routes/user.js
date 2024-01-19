@@ -21,7 +21,11 @@ router.post('/signup', async(req, res) => {
         res.status(200).send({msg : "User created sucessfully"});
      }
      else{
+<<<<<<< HEAD
          req.send(404).send("failed to create the user");
+=======
+         req.send(404).send("faled to create the user");
+>>>>>>> 69caba6757c0adc1d688baffdf2e0ac6f358eea6
      }
     })
 });
