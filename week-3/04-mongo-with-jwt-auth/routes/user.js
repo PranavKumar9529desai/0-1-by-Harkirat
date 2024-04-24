@@ -52,22 +52,30 @@ router.get('/courses', async(req, res) => {
 });
 });
 
-router.post("/courses/:courseId", userMiddleware, (req, res) => {
+router.post("/courses/:courseId", userMiddleware, async (req, res) => {
   // Implement course purchase logic
   const courseId = req.params.courseId;
-  const username = req.headers.username;
-  User.updateOne(
-    { username },
-    {
-      $push: { purchasedCourses: courseId },
+  const username = req.body.username;
+  let CourseStatus , CourseMessage ;
+  
+   const result = await User.updateOne(
+      { username },
+      {
+        $push: { purchasedCourses: courseId },
+      }
+    );
+    
+    if (result.acknowledged){
+        CourseStatus = 200 ;
+        CourseMessage = "Sucessfully created the course" ;
     }
-  ).catch((e) => {
-    console.log(e);
-  });
-  res.json({
-    message: "Purchase complete!",
-  });
+    else {
+        CourseStatus = 400 ;
+        CourseMessage = "Can not create the Course" ;
+    }
+        res.status(CourseStatus).json({msg : CourseMessage})
 });
+ 
 
 
 router.get('/courses', async(req, res) => {

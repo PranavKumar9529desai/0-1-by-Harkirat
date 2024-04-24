@@ -1,0 +1,106 @@
+Named exports vs Defaults export 
+
+Named export require destrucring and deafault exports don't not require the destruring 
+
+
+React is single page application 
+
+before react come in picture hard reload happens before the new html page comes.
+
+what is bundler ?
+--> whole js code that you writtean which will be given the user's application.
+
+
+what is client side routing ?///
+-->  rendering new of compoenents based on routes 
+
+
+React Routing 
+
+(
+    <BrowserRouter>
+       <Routes>
+        <Route path='/dashboard' element= {<Dashboard/>}    />
+        <Route path='/' element= {<Landing/>}    />
+        </Routes>
+    </BrowserRouter>)
+
+{/* here hard reaload happen as route chages so what is the right way */}
+
+
+useNaviagate right way to dod client side routing 
+
+
+so we use the useNaviate hook to change routes smoothly to avoid hard reload in react 
+you can't use the navigate hook outside the <Browser></Browser>
+
+
+function Appbar(){
+     const naviagete = useNavigate();           // iniliaing the useNavigate hook
+ 
+     return (
+     <div>
+      <button onClick={()=>{
+          naviagete('/dashboard');
+         }}>Dashboard</button>
+
+         <button onClick={()=>{
+          naviagete('/');
+         }}>Landing page</button>
+     </div>)
+   }
+
+
+// so we create the new component and then use it render inside the <Browser>
+
+
+
+what are props drilling ?
+--> basically if parent wants to send the props to the child the state needs to pass from every child before the desitination . 
+
+so the contextApi are introduced in order to teleport the props to the destination directly without passing it from every child .
+
+
+here is how you use the contexapi 
+
+you create a teleporter which can directly passes the props from the parent from the child 
+
+here how you create the teleporter 
+
+       import { createContext } from 'react';
+
+       export const CountContext = createContext(0) ;
+
+and you wrap the components which wants to send the teleported value inside the provider 
+here is the code 
+
+<CounContext.provider value={count}
+<Count />
+<CountContext.provider / >
+
+
+Recoil selector : 
+    recoil selectors are dervied state means that value is based on other atoms or selecotors .
+
+how to create a selector : 
+
+export const evenSelector = selector({
+ key  : "evenSelctor" , 
+ get  :  ({get})=>{
+ const count =  get(countAtom );
+ return count % 2 === 0 ;
+},
+});
+
+
+// here you are creating conditional statement not printing statement 
+
+
+so when to use the usestate and when to use recoil ?
+ 
+---> use usestate when state is only getting used in component .
+
+
+
+ 
+ 

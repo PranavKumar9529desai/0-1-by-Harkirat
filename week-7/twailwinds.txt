@@ -1,0 +1,1 @@
+you need to restart the vite when you are using the twailwind with vite 

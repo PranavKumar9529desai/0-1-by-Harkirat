@@ -4,9 +4,7 @@ const { User , Admin  , Course} = require('../db');
 const router = Router();
 const jwt = require('jsonwebtoken');
 const { stringify } = require("querystring");
-// const secret = process.env.secret;
-const secret = "pranavkumar";
-console.log(secret);
+
 
 // Admin Routes
 router.post('/signup', async(req, res) => {
@@ -23,24 +21,24 @@ router.post('/signup', async(req, res) => {
 });
 
 router.post('/signin', async (req, res) => {
-    // Implement admin signup logic
-    const username  = req.body.username ;
+    const username  = req.body.username;
     const password =  req.body.password;
-    const payload = {
-        username,
+    const payload = { username };
+    const token = jwt.sign(payload, secret);
+
+    const user = await Admin.findOne({ username: username });
+
+    let responseStatus, responseMessage;
+
+    if (user) {
+        responseStatus = 200;
+        responseMessage = { msg: "signIn successful", Token: token };
+    } else {
+        responseStatus = 400;
+        responseMessage = { msg: "failed at signin, signup once again" };
     }
-    const token = jwt.sign(payload,secret);
-    await Admin.find({
-        username : username
-    }).
-    then((value)=>{
-        console.log(value);
-        if(!(value.length===0)) res.status(200).send({msg : "signIn sucessfull " , Token:token});
-        // console.log(value);
-        else{
-            res.status(400).send({msg : "failed at signin signup once again"});
-        }
-    })
+
+    res.status(responseStatus).send(responseMessage);
 });  
 
 router.post('/courses', adminMiddleware, (req, res) => {

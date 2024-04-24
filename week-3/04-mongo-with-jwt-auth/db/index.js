@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
+
 
 // Connect to MongoDB
-mongoose.connect('mongodb://0.0.0.0/JWT_AUTH').then(()=>{console.log("database connected")}).catch((err)=>{console.log(err)});
+mongoose.connect(process.env.MongoURL).then(()=>{console.log("database connected")}).catch((err)=>{console.log(err)});
 
 
 // Define schemas

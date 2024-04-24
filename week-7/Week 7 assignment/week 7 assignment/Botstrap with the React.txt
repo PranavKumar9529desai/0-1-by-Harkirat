@@ -1,0 +1,28 @@
+step 1 install react-boostrap npm package 
+
+npm install react-bootstrap bootstrap
+
+
+
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+
+function App() {
+  return (
+    <div className="App">
+      <Button variant="primary">Primary</Button>
+    </div>
+  );
+}
+
+export default App;
+
+
+
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+/>
+
+
+add this just after the the title tag

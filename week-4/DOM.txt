@@ -1,8 +1,9 @@
-what is purpose of using ids as class do the same thing
-->Id let's use the dom api
+what is dom ?
+->dom is tree like structure which is used to create and represent the webpages.
+
+Appenchild :
+  method sued ot create new node and  append it to dom tree.
 
 
-
-basicalyy when we use Document in our code we are using the dom api .
-as we know browser consits of the many more things and one of them is dom api.
-which is provided buy the browser not buy the javascript.
+BUbbling :
+ chages either made by the from parent element ot he child element.

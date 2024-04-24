@@ -1,0 +1,35 @@
+Tailwind used the similar apporaches like bootstap using the class to style the compoent 
+
+
+Flexbox : 
+   justify content  : move item which are prsent inside the parent component horizontally  
+
+   align item : move items  vertically  
+
+
+  values can be  : flex end , start , space betwwen  , space around , space evenly 
+  
+
+and there are many more functions avaiable in flex box such as the 
+flex-dirction and flex-flow etc ..
+
+
+
+Breakpoints : 
+
+ there are ceratain standard breakpoints such as 
+
+ sm    md   xl  2xl
+ they represent the width or height of screen you write yoer logic to simply how you wnat ren der thinsg whene you reach this brakpoints .
+
+
+Mobile first apporach : 
+
+Tailwinnd is mobile first means that the breakpoints are valid when condition is meet and above the condition menas that 
+
+<div className="grid grid-cols-1 sm: grid-colos-2 "
+
+means that by default coloumn take all width in row and when screen size will increase above the the "md" brakpoint 3 columns in a row .
+
+
+ 

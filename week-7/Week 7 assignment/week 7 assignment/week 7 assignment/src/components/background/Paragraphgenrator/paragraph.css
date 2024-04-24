@@ -1,0 +1,36 @@
+.Background{
+   height: 480px;
+   border: 4px solid;
+   padding: 30px;
+   margin : 30px;
+   
+}
+
+
+.Title {
+    width : 300px;
+    height: 50;  
+    padding: 15px;
+    margin: 15px;
+    text-align: center;
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+    margin-right: auto;
+    margin-left: auto;
+    
+}
+
+.DownDiv {
+    display : flex ;
+}
+
+.DownDiv input{
+    display: flex;
+}
+
+
+#GenrateButton{
+    display: flex;
+    align-self: center;
+    margin-right: auto;
+}

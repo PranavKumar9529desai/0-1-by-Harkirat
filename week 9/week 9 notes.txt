@@ -1,0 +1,14 @@
+ useEffect(() => {
+    // Toggle the state every 5 seconds
+    const intervalId = setInterval(() => {
+      setRender(r => !r);
+    }, 5000);
+
+    // Cleanup function: Clear the interval when the component is unmounted
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
+
+returning a function in the useeffect acts as a cleanup function it runs when compoenent is unmounted.

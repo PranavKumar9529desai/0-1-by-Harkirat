@@ -1,0 +1,12 @@
+Typescript is mainted by Microsoft it is superset of js.
+  --->it has strict typing and various other features on top of the js.
+
+
+so the big question as we know the broswer doesn't understands the typescript neither the node js understands the typescript then how does typescript compilation works .
+
+here what happens
+
+   typescript code get compile down to jsfile by using the command called as "TSC"
+what it does is if the code has the any compile time eroor it doesn't create the jsfile.
+
+their other compliar which can do the same job such as esbuild,swc
